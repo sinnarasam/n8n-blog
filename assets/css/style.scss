@@ -1,0 +1,204 @@
+---
+---
+@import "minima";
+
+/* ── Google Fonts: Noto Sans KR ── */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+/* ── 기본 ── */
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  line-height: 1.8;
+}
+
+/* ── 헤더 ── */
+.site-header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 55%, #0f3460 100%);
+  border-bottom: none;
+  min-height: 64px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.site-title,
+.site-title:visited {
+  color: #e94560;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.3px;
+}
+
+.site-title:hover {
+  color: #ff6b81;
+  text-decoration: none;
+}
+
+.site-nav {
+  background: transparent;
+}
+
+.site-nav .page-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.site-nav .page-link:hover {
+  color: #e94560;
+  text-decoration: none;
+}
+
+/* ── 메인 콘텐츠 래퍼 ── */
+.page-content {
+  padding: 2.5rem 0 3rem;
+}
+
+.wrapper {
+  max-width: 860px;
+}
+
+/* ── 페이지 타이틀 ── */
+.page-heading,
+h1.post-title,
+.page-content h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #e94560;
+  display: inline-block;
+}
+
+/* ── 포스트 카드 (index 목록의 ### 항목) ── */
+.page-content h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.page-content h3 a {
+  color: #1a202c;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.page-content h3 a:hover {
+  color: #e94560;
+}
+
+/* 날짜 + 태그 줄 (h3 바로 다음 p) */
+.page-content h3 + p {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+/* h3 + p 묶음을 카드처럼 */
+.page-content h3 {
+  background: #ffffff;
+  border-radius: 12px 12px 0 0;
+  padding: 1.2rem 1.4rem 0.6rem;
+  margin-top: 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  border-left: 4px solid #e94560;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.page-content h3 + p {
+  background: #ffffff;
+  border-radius: 0 0 12px 12px;
+  padding: 0 1.4rem 1.1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  border-left: 4px solid #e94560;
+  margin-bottom: 0;
+}
+
+/* 카드 hover 효과 */
+.page-content h3:hover,
+.page-content h3:hover + p {
+  box-shadow: 0 6px 24px rgba(233, 69, 96, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ── 구분선 ── */
+.page-content hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 1rem 0;
+}
+
+/* ── 포스트 본문 ── */
+.post-content {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  margin-top: 1.5rem;
+}
+
+.post-content h2 {
+  color: #1a202c;
+  border-bottom: 2px solid #f0f4f8;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+.post-content h3 {
+  color: #2d3748;
+}
+
+.post-content a {
+  color: #e94560;
+  text-decoration: underline;
+}
+
+/* ── 태그 코드 스타일 ── */
+code {
+  background: #edf2f7;
+  color: #0f3460;
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-family: 'Noto Sans KR', monospace;
+}
+
+/* ── 푸터 ── */
+.site-footer {
+  background: #1a1a2e;
+  color: rgba(255, 255, 255, 0.45);
+  border-top: none;
+  padding: 2rem 0;
+}
+
+.site-footer a {
+  color: #e94560;
+}
+
+.site-footer a:hover {
+  color: #ff6b81;
+  text-decoration: none;
+}
+
+.footer-col-wrapper {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── 반응형 ── */
+@media (max-width: 600px) {
+  .post-content {
+    padding: 1.5rem 1.2rem;
+  }
+  .page-content h3 {
+    padding: 1rem 1rem 0.5rem;
+  }
+  .page-content h3 + p {
+    padding: 0 1rem 0.9rem;
+  }
+}
