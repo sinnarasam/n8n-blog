@@ -8,6 +8,10 @@
 /* ── 기본 ── */
 *, *::before, *::after { box-sizing: border-box; }
 
+/* 전체 폰트 기준 크기: 브라우저 기본 16px → 26px (+10px)
+   rem 단위를 쓰는 모든 요소가 이 값에 비례해 커짐 */
+html { font-size: 26px; }
+
 body {
   font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
   background: #f0f4f8;
