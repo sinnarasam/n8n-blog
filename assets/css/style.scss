@@ -15,7 +15,9 @@ body {
   line-height: 1.8;
 }
 
-/* ── 헤더 ── */
+/* ─────────────────────────────────────────
+   사이트 헤더 (전체 공통)
+───────────────────────────────────────── */
 .site-header {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 55%, #0f3460 100%);
   border-bottom: none;
@@ -40,141 +42,115 @@ body {
 }
 .site-nav .page-link:hover { color: #e94560; text-decoration: none; }
 
-/* ── 히어로 섹션 ── */
-.hero-section {
-  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-  padding: 3.5rem 1.5rem 3rem;
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-.hero-title {
-  color: #ffffff;
-  font-size: 2.4rem;
+/* ─────────────────────────────────────────
+   레이아웃 래퍼
+───────────────────────────────────────── */
+.page-content { padding: 2.5rem 0 3rem; }
+.wrapper      { max-width: 860px; }
+
+/* ── 페이지 제목 h1 (index, post 공통) ── */
+.page-heading,
+h1.post-title,
+.page-content h1 {
+  font-size: 1.9rem;
   font-weight: 700;
-  margin: 0 0 0.6rem;
-  border: none;
-  padding: 0;
-  display: block;
-}
-.hero-desc {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 1rem;
-  margin: 0 0 0.8rem;
-}
-.hero-stats {
-  color: #e94560;
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin: 0;
-}
-
-/* ── 필터 바 ── */
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  max-width: 900px;
-  margin: 0 auto 2rem;
-  padding: 0 1.2rem;
-}
-.filter-btn {
-  padding: 0.42rem 1.15rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 999px;
-  background: #fff;
-  color: #4a5568;
-  font-size: 0.88rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.filter-btn:hover {
-  border-color: #e94560;
-  color: #e94560;
-}
-.filter-btn.active {
-  background: #e94560;
-  border-color: #e94560;
-  color: #fff;
-}
-
-/* ── 포스트 그리드 ── */
-.post-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-  gap: 1.25rem;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 1.2rem 3.5rem;
-}
-
-/* ── 포스트 카드 ── */
-.post-card {
-  display: flex;
-  flex-direction: column;
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 1.4rem 1.5rem 1.2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-  border-left: 4px solid #e94560;
-  text-decoration: none !important;
-  color: inherit;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.post-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(233, 69, 96, 0.18);
-  color: inherit;
-}
-
-.card-title {
-  font-size: 0.98rem;
-  font-weight: 600;
   color: #1a202c;
-  margin: 0.65rem 0 0;
-  line-height: 1.55;
-  flex: 1;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #e94560;
+  display: inline-block;
+}
+
+/* ─────────────────────────────────────────
+   히어로 배너
+   index.md 최상단의 Markdown blockquote(>)를
+   다크 그라디언트 배너로 스타일링
+───────────────────────────────────────── */
+.page-content blockquote {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+  border-left: 4px solid #e94560;
+  border-radius: 14px;
+  padding: 1.5rem 2rem;
+  margin: 0 0 2.5rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+.page-content blockquote p {
+  margin: 0;
+  font-size: 0.97rem;
+  /* 아래 .post-list h3+p 규칙과 충돌하지 않도록 명시적으로 리셋 */
   background: none;
   border: none;
   box-shadow: none;
   padding: 0;
   border-radius: 0;
 }
-.post-card:hover .card-title { color: #e94560; }
+.page-content blockquote strong { color: #e94560; }
 
-.card-date {
-  font-size: 0.78rem;
-  color: #a0aec0;
-  margin: 0.8rem 0 0;
-  padding: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
+/* ─────────────────────────────────────────
+   포스트 카드 목록 (.post-list 안에서만 적용)
+   scope: index.md <div class="post-list"> 내부
+   → 포스트 본문(.post-content)의 h3 에는 영향 없음
+───────────────────────────────────────── */
+
+/* 카드 상단: 제목 링크 (### [제목](url) → h3>a) */
+.post-list h3 {
+  background: #ffffff;
+  border-radius: 14px 14px 0 0;
+  padding: 1.3rem 1.5rem 0.6rem;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+  border-left: 4px solid #e94560;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.post-list h3 a {
+  color: #1a202c;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.post-list h3 a:hover { color: #e94560; }
+
+/* 카드 하단: 날짜·카테고리 메타 (h3 바로 다음 p) */
+.post-list h3 + p {
+  background: #ffffff;
+  border-radius: 0 0 14px 14px;
+  padding: 0.4rem 1.5rem 1.1rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.83rem;
+  color: #718096;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+  border-left: 4px solid #e94560;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
-/* ── 카테고리 뱃지 ── */
-.cat-badge {
-  display: inline-block;
-  padding: 0.22em 0.75em;
+/* 호버: h3 에 마우스 올리면 카드 전체(h3 + 바로 다음 p)가 함께 떠오름 */
+.post-list h3:hover,
+.post-list h3:hover + p {
+  box-shadow: 0 10px 30px rgba(233, 69, 96, 0.18);
+  transform: translateY(-3px);
+}
+
+/* 카테고리 인라인 코드(`기술`)를 뱃지처럼 스타일링 */
+.post-list h3 + p code {
+  background: #fff0f3;
+  color: #e94560;
+  border: 1px solid #fcd4dc;
   border-radius: 999px;
-  font-size: 0.74rem;
-  font-weight: 700;
-  color: #fff;
-  align-self: flex-start;
-  letter-spacing: 0.02em;
+  padding: 0.1em 0.6em;
+  font-size: 0.82em;
+  font-weight: 600;
+  font-family: 'Noto Sans KR', sans-serif;
 }
-.badge-AI    { background: #3b82f6; }
-.badge-기술  { background: #8b5cf6; }
-.badge-비즈니스 { background: #10b981; }
-.badge-라이프   { background: #f59e0b; }
-.badge-헬스  { background: #ef4444; }
 
-/* ── 래퍼 ── */
-.page-content { padding: 0; }
-.wrapper { max-width: 900px; }
+/* hr: 시각적 선 없이 카드 사이 여백 역할만 */
+.post-list hr { border: none; margin: 0; }
 
-/* ── 포스트 본문 ── */
+/* ─────────────────────────────────────────
+   포스트 본문 (.post-content)
+   layout: post 페이지에서 렌더링되는 영역
+───────────────────────────────────────── */
 .post-content {
   background: #ffffff;
   border-radius: 16px;
@@ -188,21 +164,11 @@ body {
   padding-bottom: 0.5rem;
   margin-top: 2rem;
 }
+/* 포스트 본문 h3은 카드 스타일 없이 색상만 */
 .post-content h3 { color: #2d3748; }
 .post-content a  { color: #e94560; text-decoration: underline; }
 
-/* ── 포스트 페이지 타이틀 ── */
-h1.post-title,
-.post-header h1 {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: #1a202c;
-  margin-bottom: 1.8rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid #e94560;
-}
-
-/* ── 코드 ── */
+/* ── 기본 코드 스타일 ── */
 code {
   background: #edf2f7;
   color: #0f3460;
@@ -211,7 +177,9 @@ code {
   font-size: 0.85em;
 }
 
-/* ── 푸터 ── */
+/* ─────────────────────────────────────────
+   사이트 푸터 (전체 공통)
+───────────────────────────────────────── */
 .site-footer {
   background: #1a1a2e;
   color: rgba(255, 255, 255, 0.45);
@@ -222,9 +190,12 @@ code {
 .site-footer a:hover { color: #ff6b81; text-decoration: none; }
 .footer-col-wrapper { color: rgba(255, 255, 255, 0.45); }
 
-/* ── 반응형 ── */
+/* ─────────────────────────────────────────
+   반응형 (모바일 600px 이하)
+───────────────────────────────────────── */
 @media (max-width: 600px) {
-  .hero-title { font-size: 1.8rem; }
-  .post-grid  { grid-template-columns: 1fr; }
-  .post-content { padding: 1.5rem 1.2rem; }
+  .post-list h3     { padding: 1rem 1.1rem 0.5rem; }
+  .post-list h3 + p { padding: 0.3rem 1.1rem 0.9rem; }
+  .page-content blockquote { padding: 1.2rem 1.3rem; }
+  .post-content     { padding: 1.5rem 1.2rem; }
 }
