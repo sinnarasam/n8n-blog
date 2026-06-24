@@ -181,6 +181,40 @@ code {
   font-size: 0.85em;
 }
 
+/* ── 코드블록 Copy 버튼 ── */
+/* pre 를 기준점으로 삼아 버튼을 오른쪽 상단에 절대 위치 */
+pre { position: relative; }
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 10px;
+  font-size: 11px;           /* html 기준 폰트 크기와 무관하게 px 고정 */
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  line-height: 1.5;
+  background: rgba(26, 26, 46, 0.75);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  /* 코드 텍스트 선택 시 버튼이 같이 선택되지 않도록 */
+  user-select: none;
+}
+.copy-btn:hover {
+  background: #e94560;
+  color: #fff;
+  border-color: #e94560;
+}
+/* 복사 완료 시 초록색으로 전환 (2초 후 원복) */
+.copy-btn.copied {
+  background: #10b981;
+  color: #fff;
+  border-color: #10b981;
+}
+
 /* ─────────────────────────────────────────
    사이트 푸터 (전체 공통)
 ───────────────────────────────────────── */

@@ -1,0 +1,50 @@
+<script>
+/* 코드블록 Copy 버튼
+   DOMContentLoaded: HTML 파싱 완료 후 실행 (이미지 로드 불필요) */
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('pre').forEach(function (pre) {
+
+    /* 버튼 생성 */
+    var btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'Copy';
+    pre.appendChild(btn);
+
+    btn.addEventListener('click', function () {
+      /* pre 안의 code 텍스트 추출 */
+      var code = pre.querySelector('code');
+      var text = code ? code.innerText : pre.innerText;
+
+      /* Clipboard API (최신 브라우저) */
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
+      }
+
+      /* 복사 성공 피드백 */
+      function done() {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      }
+
+      /* 구형 브라우저 대체 방식 */
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        done();
+      }
+    });
+  });
+});
+</script>
